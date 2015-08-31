@@ -1,0 +1,844 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja-jp" ><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="copyright" content="&copy; niwango, Inc.">
+<meta property="fb:app_id" content="378853695459932">
+<meta name="keywords" content="ニコニコ動画,動画,コメント">
+<meta name="description" content="｢ニコニコ動画｣は音楽・お笑い・アニメ・ゲーム・グラビアなどの動画再生中にコメントを付けて楽しむ動画コミュニティサイトです">
+<link rel="alternate" charset="utf-8" type="application/rss+xml" title="マイリスト ぐるたみんツアー！！！" href="/mylist/12732998?rss=2.0&amp;lang=ja-jp">
+<link rel="alternate" media="handheld" href="http://nicomoba.jp/mylist/12732998" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://sp.nicovideo.jp/mylist/12732998" />
+    <title>ぐるたみんツアー！！！ ‐ ニコニコ動画:GINZA</title>
+
+<base href="http://www.nicovideo.jp/">
+<link rel="shortcut icon" href="http://res.nimg.jp/img/favicon.ico">
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" href="http://res.nimg.jp/css/base.css?130809">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="http://res.nimg.jp/css/common.css?131126">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="http://res.nimg.jp/js/nicolib/SuggestSearch/nicolib-SuggestSearch.css?131204">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="http://res.nimg.jp/css/mylist.css?130124">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="http://res.nimg.jp/css/zero_nicorepo.css?121017">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="http://res.nimg.jp/css/multilanguage.css?121227">
+
+<script type="text/javascript">
+
+if (typeof Nico === 'undefined') Nico = {};
+if (typeof Nico.messages === 'undefined') Nico.messages = {};
+
+
+
+Nico.messages.adding               = '登録中...';
+Nico.messages.add_confirm          = 'お気に入りに登録してもよろしいですか？';
+Nico.messages.add_success          = 'お気に入り登録しました';
+Nico.messages.add_fail             = 'お気に入り登録に失敗しました';
+
+</script><script type="text/javascript" src="http://res.nimg.jp/js/lib/prototype.js?1.5.1.1_2"></script>
+<script type="text/javascript" src="http://res.nimg.jp/js/common.js?090905"></script>
+<script type="text/javascript" src="http://res.nimg.jp/js/swfobject.js?4"></script>
+<script type="text/javascript" src="http://res.nimg.jp/js/nicolib.js?150128"></script>
+<script type="text/javascript" src="http://res.nimg.jp/js/ads.js?111213"></script>
+	<script type="text/javascript" charset="utf-8" src="http://res.nimg.jp/js/lib/ads-2.11.0.min.js?141119"></script>
+
+
+<script type="text/javascript" src="http://res.nimg.jp/js/__utm.js?110928"></script>
+<script src="//cdn.optimizely.com/js/1252970284.js" defer></script><script type="text/javascript" src="http://res.nimg.jp/js/lib/jquery/jquery-1.7.min.js"></script>
+<script type="text/javascript">$j=jQuery.noConflict();</script>
+
+<script type="text/javascript"><!--
+
+var User = { id: false, age: false, isPremium: false, isOver18: !!document.cookie.match(/nicoadult\s*=\s*1/), isMan: null };
+var q = "";
+var country = "";
+
+
+
+
+--></script>
+
+
+
+
+<script type="text/javascript" charset="utf-8"><!--
+
+Ads.get_segment_object = function(){
+	var segment = {};
+
+	return segment;
+
+};
+
+// -->
+</script>
+
+<script type="text/javascript" src="http://res.nimg.jp/js/nicolib/SuggestSearch/nicolib-SuggestSearch.js?150205"></script>
+<script type="text/javascript">Nico.SuggestSearch.IS_ENABLED = true;Nico.SuggestSearch.IS_LOGIN = false;</script>
+
+</head>
+
+<body id="PAGETOP" class="ja-jp">
+
+<!---->
+<link rel="stylesheet" type="text/css" charset="utf-8" href="http://res.nimg.jp/js/nicoheader/resources/siteHeader.css?150323">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="http://res.nimg.jp/js/nicoheader/resources/nicolib-CommonNotificationHeader.css?141023">
+<script type="text/javascript" charset="utf-8" src="http://res.nimg.jp/js/nicoheader/siteHeader.js?131031"></script>
+<script type="text/javascript" charset="utf-8" src="http://res.nimg.jp/js/nicoheader/nicolib-CommonNotificationHeader.js?150618"></script>
+<div id="siteHeader">
+	<div id="siteHeaderInner">
+		<ul class="siteHeaderGlovalNavigation">
+			<li><a href="http://www.nicovideo.jp/?header"><span>niconico</span></a></li>
+			<li><a href="http://www.nicovideo.jp/video_top?header"><span>動画</span></a></li>
+			<li><a href="http://seiga.nicovideo.jp/?header"><span>静画</span></a></li>
+			<li><a href="http://live.nicovideo.jp/?header"><span>生放送</span></a></li>
+			<li><a href="http://ch.nicovideo.jp/?header"><span>チャンネル</span></a></li>
+			<li><a href="http://ch.nicovideo.jp/portal/blomaga?header"><span>ブロマガ</span></a></li>
+			<li class="siteHeaderOther" id="siteHeaderLeftMenu">
+				<a href="javascript:void(0);"><span>その他▼</span></a>
+				<ul id="siteHeaderLeftMenuContainer" style="display: none;">
+					<li><a href="http://app.nicovideo.jp/?header">アプリ</a></li>
+					<li><a href="http://dic.nicovideo.jp/?header">大百科</a></li>
+					<li><a href="http://ichiba.nicovideo.jp/?header">市場</a></li>
+					<li><a href="http://uad.nicovideo.jp/?header">ニコニ広告</a></li>
+					<li><a href="http://3d.nicovideo.jp/?header">ニコニ立体</a></li>
+					<li><a href="http://commons.nicovideo.jp/?header">コモンズ</a></li>
+					<li><a href="http://jk.nicovideo.jp/?header">実況</a></li>
+					<li><a href="http://com.nicovideo.jp/?header">コミュニティ</a></li>
+										<li><a href="http://news.nicovideo.jp/?header">ニュース</a></li>
+					<li class="menuServiceList"><a href="http://www.nicovideo.jp/top_service?header">サービス・デバイス一覧</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="siteHeaderMenuList">
+			<li id="siteHeaderNotification" class="siteHeaderLogin">
+				<a href="http://www.nicovideo.jp/login"><span>ログイン</span></a>
+			</li>
+			<li class="siteHeaderHorizon">
+				<a href="https://account.nicovideo.jp/register?sec=common_header&mode=landing" style="color:#F1B700;"><span>ニコニコ会員登録</span></a>
+			</li>
+<!-- end notification header -->
+			<li class="siteHeaderHorizon"><a href="http://www.nicovideo.jp/recommendations"><span>オススメ</span></a></li>
+			<li><a href="http://www.upload.nicovideo.jp/upload"><span>動画を投稿</span></a></li>
+			<li><a href="/ranking" id="menu-ranking"><span>ランキング</span></a></li>
+			<li class="siteHeaderOther" id="siteHeaderRightMenu">
+				<a href="javascript:void(0);"><span>メニュー▼</span></a>
+				<ul style="display: none;" id="siteHeaderRightMenuContainer">
+					<li><a href="/my/mylist">マイリスト</a></li>
+					<li><a href="/my/watchlist">お気に入り</a></li>
+					<li><a href="/my/video">投稿動画</a></li>
+					<li><a href="/my/history">視聴履歴</a></li>
+					<li><a href="https://account.nicovideo.jp/my/account">アカウント設定</a></li>
+					<li><a href="http://point.nicovideo.jp/index/bank/?from_notification=2">ポイント購入</a></li>					<li id="siteHeaderRightMenuUnfix"><a href="javascript:void(0);">ヘッダー:<span class="siteHeaderScroll">追従</span></a></li>
+					<li id="siteHeaderRightMenuFix"><a href="javascript:void(0);">ヘッダー:<span class="siteHeaderFix">固定</span></a></li>
+					<li><a href="http://qa.nicovideo.jp/">ヘルプ</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div><!---->
+ 
+
+
+<div id="PAGECONTAINER">
+	<div id="PAGEMAIN" class="body_984">
+		<div id="PAGEHEADER">
+		<div class="clearfix">
+<div id="head_logo" class="zero">
+	<p id="hidariue"><a href="http://www.nicovideo.jp/hidariue"><script type="text/javascript" src="http://res.nimg.jp/js/head_icon.js?110513"></script></a></p>
+	<p id="nicodou"><a href="http://www.nicovideo.jp/video_top" target="_top"><img src="http://res.nimg.jp/img/base/head/logo/ginza.png" alt="ニコニコ動画:GINZA"></a></p>
+</div>
+
+<div id="head_search">
+<form id="head_search_form" action="/search" method="get" onsubmit="submitSearch(this.action, false); return false;"><input type="hidden" name="ref"><p id="search_tab"><a href="#" class="head_ssw_1" id="target_s" title="動画をキーワードで検索" onclick="submitSearch('/search', this, Nico.SuggestSearch.TARGET_PAGE_KEYWORD_SEARCH); return false;">キーワード</a><a href="#" class="head_ssw_0" id="target_t" title="動画をタグで検索"       onclick="submitSearch('/tag', this, Nico.SuggestSearch.TARGET_PAGE_TAG_SEARCH); return false;">タグ</a><a href="#" class="head_ssw_0" id="target_m" title="マイリストを検索"       onclick="submitSearch('/mylist_search', this, Nico.SuggestSearch.TARGET_PAGE_MYLIST_SEARCH); return false;">マイリスト</a></p><div id="search_input" class="zero"><p class="typeText"><input id="bar_search" type="text" name="s" value=""></p><p class="typeSubmit"><input name="submit" type="submit" alt="検索"></p></div></form>
+</div>
+<script type="text/javascript"><!--
+var _suggestSearchInstance = null;
+if(typeof jQuery !== 'undefined') _suggestSearchInstance = new Nico.SuggestSearch({targetInput: '#bar_search'});
+
+function submitSearch(p, e, q) {
+    if (_suggestSearchInstance) _suggestSearchInstance.setTargetPage(q);
+	var f = $('head_search_form'), s = String.interpret(f.s.value).strip().replace(/%20/g, '+');
+	if (s != '') location.href = p + "/" + encodeURIComponent(s) + (f.track ? "?track=" + f.track.value : "");
+	else if (e) { f.down('a.head_ssw_1').className = 'head_ssw_0'; e.className = 'head_ssw_1'; f.action = p; f.s.focus(); }
+}
+--></script>
+
+
+<div id="head_ads">
+	<div class="ads_468"><!--↓表示してもよい↓-->
+
+<div id="web_pc_top"></div>
+<script type="text/javascript"><!--
+
+
+	(function(){
+		var segment = Ads.get_segment_object();
+		new Ads.Advertisement({zone: 38, segments: segment, impression: 2}).set('web_pc_top');
+	})();
+
+
+
+--></script>
+
+<!--↑表示してもよい↑-->
+
+
+</div>
+</div>
+
+</div>		</div>
+		<div id="PAGEBODY">
+		<div class="content_672">
+<!--↓左列↓-->
+<script type="text/javascript" charset="utf-8" src="http://res.nimg.jp/js/favmylist.js?121221"></script>
+<script type="text/javascript">
+    FavMylist.csrf_token = "";
+</script>
+<div id="SYS_box_mylist_header"></div>
+<div id="SYS_box_mylist_body"></div>
+
+
+<!--↓とりあえずマイリスト・ヘッダー部分↓-->
+<!---->
+<script type="application/x-jarty" id="tpl_deflist_header">
+
+<div class="mb8p4">
+<h1>とりあえずマイリスト</h1>
+<p class="font12">とりあえずマイリストは100件を超えると順に削除されます。残しておきたい動画は他のマイリストフォルダに移動して下さい。</p>
+</div>
+
+</script>
+<!--↑とりあえずマイリスト・ヘッダー部分↑-->
+
+
+<!--↓とりあえずマイリスト・本体部分↓-->
+<!---->
+<script type="application/x-jarty" id="tpl_deflist_body">
+
+{if $any_page_items || $filters.length > 0}
+{include id="tpl_filter"}
+<table width="672" cellpadding="0" cellspacing="0"><tr>
+<td>{include id="tpl_sort"}</td>
+<td width="100%" align="right">{include id="tpl_pager"}</td>
+</tr></table>
+{/if}
+
+{if $any_page_items}
+<div id="SYS_page_items"></div>
+{elseif $filters.length > 0}
+<div class="mb16p4"><p class="main_message">絞り込み条件に該当するアイテムがありません。</p></div>
+{else}
+<div class="mb16p4"><p class="main_message">｢とりあえずマイリスト｣ に動画は登録されていません。<br>好きな動画を登録しましょう！</p></div>
+{/if}
+
+{if $any_page_items || $filters.length > 0}
+<table width="672" cellpadding="0" cellspacing="0" style="margin:0 0 8px;"><tr>
+<td>{include id="tpl_sort"}</td>
+<td width="100%" align="right">{include id="tpl_pager"}</td>
+</tr></table>
+{/if}
+
+</script>
+<!--↑とりあえずマイリスト・本体部分↑-->
+
+
+<!--↓名前付きマイリスト・ヘッダー部分(通常時)↓-->
+<!---->
+<script type="application/x-jarty" id="tpl_mylist_header">
+
+<div style="padding:4px;">
+<p class="font12">{strip}
+{if $group.public}
+<a href="user/{$mylist_owner.user_id}"><strong>{$mylist_owner.nickname|escape}</strong></a> さんの公開マイリスト
+{else}
+<span style="color:#C00;"><a href="user/{$mylist_owner.user_id}"><strong>{$mylist_owner.nickname|escape}</strong></a> さんの非公開マイリスト( 他のユーザーには見えません )</span>
+{/if}
+{/strip}</p>
+
+<h1>{$group.name}</h1>
+
+{if $group.description}<p class="group_description">{$group.description|nico_format|nl2br}</p>
+{/if}
+
+</div>
+
+{if $page_name == "mylist" || $is_owner}
+<table cellpadding="4" cellspacing="0" >
+<tr>
+	{if !$playlist_stop && !$playlist_tmp_stop && !$nicorepo_mode}
+	<td><a href="/watch/[[from_id]]?playlist_type=mylist_playlist&group_id={$group.id}&mylist_sort={$sort}" id="BTN_playlist_play_all" class="autoPlayButton"><span></span>連続再生</a></td>
+	{/if}
+	{if $is_owner}<td><input type="button" value="マイリスト編集" onClick="location.href='/my/mylist#/{$group.id}/edit'" class="submit"></td>
+	{/if}
+	{if $playlist_stop}
+	<td><p class="autoPlayButton disable"><span></span>連続再生</p></td>
+	<td class="font10" style="color:#696F6F;">※連続再生機能は現在メンテナンス中です</td>
+	{elseif $playlist_tmp_stop}
+	<td><p class="autoPlayButton disable"><span></span>連続再生</p></td>
+	<td class="font10" style="color:#696F6F;">※試験運用中につき、連続再生機能は混雑時間帯はご利用いただけません</td>
+	{/if}
+	{if $favmylist_available}
+		{if $is_watching_this_mylist}
+		<td><span class="fav_mylist_btn disable">このマイリストはお気に入り登録済みです</span></td>
+		{elseif $watching_full}
+		<td><span class="fav_mylist_btn disable">お気に入りマイリストはこれ以上登録できません</span></td>
+		{else}
+		<td><span class="fav_mylist_btn active" data-item-id="{$group.id}" onclick="FavMylist.add(this)"><img src="http://res.nimg.jp/img/favmylist/fav_mylist_icon.png" alt="">このマイリストをお気に入り登録</span></td>
+		{/if}
+		<td><span class="watchedCount">{$watched_count}</span></td>
+		{if !$is_premium && ($watching_near_limit || $watching_full)}
+		<td class="font10"><div class="premiumAdvice"><a href="{$nicoaccount_web_base_url}premium/register?sec=mylist_fav_15" class="left">【最大50件】もっとお気に入りのマイリストを登録しよう<br>登録数を最大50件に増やせます</a></div></td>
+		{/if}
+	{elseif $is_general_harajuku}
+	<td><span class="fav_mylist_btn disable" title="新バージョンのみ登録できます">このマイリストをお気に入り登録</span></td>
+	{/if}{* /if $favmylist_available *}
+</tr>
+</table>
+{if $use_nicorepo}
+<ul class="tabMenu">
+	<li class="tab{if !$nicorepo_mode} active{/if}"><a href="mylist/{$group.id}">マイリスト</a></li>
+	<li class="tab{if $nicorepo_mode} active{/if}"><a href="mylist/{$group.id}/nicorepo">ニコレポ</a></li>
+</ul>
+
+{/if}
+{/if}
+
+
+</script>
+<!--↑名前付きマイリスト・ヘッダー部分(通常時)↑-->
+
+
+<!--↓名前付きマイリスト・ヘッダー部分(編集中)↓-->
+<!---->
+<script type="application/x-jarty" id="tpl_mylist_header_edit">
+
+<div class="mb8p4">
+<div style="background:#E9EFEF; border:solid 2px #C9CFCF; padding:6px;">
+<h3 style="padding:4px;">マイリスト編集中…</h3>
+<form id="SYS_box_group_edit">
+<table cellpadding="4" cellspacing="0" class="font12" style="margin:0 auto;">
+<tr>
+<td align="right" nowrap>このマイリストは：</td>
+<td>
+<input type="radio" name="public" id="radio_public" value="1"{if $group.public} checked{/if}><label for="radio_public">みんなに見せたい( 公開 )</label><br>
+<input type="radio" name="public" id="radio_private" value="0"{if !$group.public} checked{/if}><label for="radio_private" style="color:#C00;">誰にも見せたくない( 非公開 )</label>
+</td>
+</tr>
+<tr>
+<td align="right" nowrap>タイトル：</td>
+<td><input type="text" name="name" value="{$group.name}" style="font-size:16px; width:480px;"></td>
+</tr>
+<tr>
+<td align="right" nowrap>説明文：</td>
+<td><textarea name="description" rows="4" style="width:480px;">{$group.description}</textarea></td>
+</tr>
+<tr>
+<td align="right" nowrap>初期の並び順：</td>
+<td>{include id="tpl_sort_select" select_name="default_sort" sort=$group.default_sort}</td>
+</tr>
+<tr>
+<td align="right" nowrap>カラー：</td>
+<td><p id="SYS_box_choose_icon">
+{foreach from=$folders key=index item=folder}<a class="folder_0{if $index == $group.icon_id} selected{/if}"><img src="http://res.nimg.jp/img/x.gif" alt="" class="{$folder}"></a>{/foreach}
+</p></td>
+</tr>
+</table>
+<div style="text-align:center; padding:4px;"><input type="submit" class="submit" value="保存"><span {if $create} style="display:none;"{/if}><input type="button" class="submit" id="SYS_btn_cancel_edit_group" value="キャンセル"></span></div>
+</form>
+</div>
+</div>
+
+</script>
+<!--↑名前付きマイリスト・ヘッダー部分(編集中)↑-->
+
+
+<!--↓名前付きマイリスト・本体部分↓-->
+<!---->
+<script type="application/x-jarty" id="tpl_mylist_body">
+
+{if !$nicorepo_mode}
+{if $any_page_items || $filters.length > 0}
+{include id="tpl_filter"}
+<table width="672" cellpadding="0" cellspacing="0"><tr>
+<td>{include id="tpl_sort"}</td>
+<td width="100%" align="right">{include id="tpl_pager"}</td>
+</tr></table>
+{/if}
+{if $any_page_items}
+<div id="SYS_page_items"></div>
+{elseif $filters.length > 0}
+<div class="mb16p4"><p class="main_message">絞り込み条件に該当するアイテムがありません。</p></div>
+{else}
+<div class="mb16p4"><p class="main_message">マイリストに動画は登録されていません。<br>好きな動画を登録しましょう！</p></div>
+{/if}
+{if $any_page_items || $filters.length > 0}
+<table width="672" cellpadding="0" cellspacing="0" style="margin:0 0 8px;"><tr>
+<td>{include id="tpl_sort"}</td>
+<td width="100%" align="right">{include id="tpl_pager"}</td>
+</tr></table>
+{/if}
+{/if}
+
+</script>
+<!--↑名前付きマイリスト・本体部分↑-->
+
+
+<!--↓マイメモリー・ヘッダー部分↓-->
+<!---->
+<script type="application/x-jarty" id="tpl_mymemory_header">
+
+<div class="mb8p4">
+<h1>マイメモリー</h1>
+<p class="font12">一般会員であればその時のコメントを、プレミアム会員であれば現在～過去のコメントを保存することができます。</p>
+</div>
+
+</script>
+<!--↑マイメモリー・ヘッダー部分↑-->
+
+
+<!--↓マイメモリー・本体部分↓-->
+<!---->
+<script type="application/x-jarty" id="tpl_mymemory_body">
+
+{if $any_page_items}
+{include id="tpl_filter"}
+<table width="672" cellpadding="4" cellspacing="0"><tr>
+<td>{include id="tpl_sort"}</td>
+<td width="100%" align="right">{include id="tpl_pager"}</td>
+</tr></table>
+<div id="SYS_page_items"></div>
+<table width="672" cellpadding="4" cellspacing="0" style="margin:0 0 8px;"><tr>
+<td>{include id="tpl_sort"}</td>
+<td width="100%" align="right">{include id="tpl_pager"}</td>
+</tr></table>
+{else}
+<div class="mb16p4"><p class="main_message">マイメモリーにコメントは保存されていません。<br>好きな動画のコメントを保存しましょう！</p></div>
+{/if}
+
+</script>
+<!--↑マイメモリー・本体部分↑-->
+
+
+<!-- *** 以下は部品 *** -->
+
+
+<!--↓チェック項目の編集↓-->
+<script type="application/x-jarty" id="tpl_check_editor">{strip}
+
+<form id="SYS_box_check_editor">
+<table cellpadding="0" cellspacing="4" class="font12">
+<tr>
+<td>チェックした項目を</td>
+{if $show_copymove && ($page_name != "mylist" || $my.groups.length > 1)}
+<td><select name="target_group_id" style="width:160px;">
+{foreach from=$my.groups item=mylistgroup}
+{if !$group || $group.id != $mylistgroup.id}<option value="{$mylistgroup.id}">{$mylistgroup.name}</option>{/if}
+{/foreach}
+</select></td>
+<td>に</td>
+{/if}
+<td nowrap>
+{if $show_copymove && ($page_name != "mylist" || $my.groups.length > 1)}
+<input type="button" class="submit" id="SYS_btn_move_mylist" value="移動"><input type="button" class="submit" id="SYS_btn_copy_mylist" value="コピー" style="margin-right:8px;">
+{/if}
+<input type="button" class="submit" id="SYS_btn_remove_mylist" value="削除" style="color:#C00;">
+</td>
+</tr>
+</table>
+</form>
+
+{/strip}</script>
+<!--↑チェック項目の編集↑-->
+
+
+<!--↓フィルタ↓-->
+<script type="application/x-jarty" id="tpl_filter">
+
+<form class="SYS_box_filter">
+<table cellpadding="4" cellspacing="0" class="font12">
+<tr>
+<td><strong>全{$items.length}件</strong></td>
+	{if $page_name == "deflist" || $page_name == "mylist"}
+	<td style="color:#CCC;">…</td>
+	<td><input type="checkbox" id="check_filter_video" name="filters" value="0"{if !$filters[0]} checked{/if}><label for="check_filter_video">動画</label></td>
+	<td><input type="checkbox" id="check_filter_seiga" name="filters" value="5"{if !$filters[5]} checked{/if}><label for="check_filter_seiga">静画</label></td>
+	<td><input type="checkbox" id="check_filter_book"  name="filters" value="6"{if !$filters[6]} checked{/if}><label for="check_filter_book" >書籍</label></td>
+	<td><input type="checkbox" id="check_filter_chblog"  name="filters" value="13"{if !$filters[13]} checked{/if}><label for="check_filter_chblog" >ブロマガ</label></td>
+	{/if}
+</tr>
+</table>
+</form>
+</script>
+<!--↑フィルタ↑-->
+
+
+<!--↓並べ替え↓-->
+<script type="application/x-jarty" id="tpl_sort">
+
+<form class="SYS_box_sort">
+{include id="tpl_sort_select" select_name="sort"}
+</form>
+
+</script>
+<!--↑並べ替え↑-->
+<!--↓並べ替え＞select↓-->
+<script type="application/x-jarty" id="tpl_sort_select">
+
+	<select name="{$select_name}" style="width:160px;">
+	<option value="1"{if $sort == "1"} selected{/if}>登録が新しい順</option>
+	<option value="0"{if $sort == "0"} selected{/if}>登録が古い順</option>
+	<option value="4"{if $sort == "4"} selected{/if}>タイトル昇順</option>
+	<option value="5"{if $sort == "5"} selected{/if}>タイトル降順</option>
+	<option value="2"{if $sort == "2"} selected{/if}>マイリストコメント昇順</option>
+	<option value="3"{if $sort == "3"} selected{/if}>マイリストコメント降順</option>
+	<option value="6"{if $sort == "6"} selected{/if}>投稿が新しい順</option>
+	<option value="7"{if $sort == "7"} selected{/if}>投稿が古い順</option>
+	<option value="8"{if $sort == "8"} selected{/if}>再生が多い順</option>
+	<option value="9"{if $sort == "9"} selected{/if}>再生が少ない順</option>
+	<option value="10"{if $sort == "10"} selected{/if}>コメントが新しい順</option>
+	<option value="11"{if $sort == "11"} selected{/if}>コメントが古い順</option>
+	<option value="12"{if $sort == "12"} selected{/if}>コメントが多い順</option>
+	<option value="13"{if $sort == "13"} selected{/if}>コメントが少ない順</option>
+	<option value="14"{if $sort == "14"} selected{/if}>マイリスト登録が多い順</option>
+	<option value="15"{if $sort == "15"} selected{/if}>マイリスト登録が少ない順</option>
+	<optgroup label="動画">
+		<option value="16"{if $sort == "16"} selected{/if}>時間が長い順</option>
+		<option value="17"{if $sort == "17"} selected{/if}>時間が短い順</option>
+	</optgroup>
+	<optgroup label="静画">
+		<option value="18"{if $sort == "18"} selected{/if}>枚数が多い順</option>
+		<option value="19"{if $sort == "19"} selected{/if}>枚数が少ない順</option>
+	</optgroup>
+	</select>
+
+</script>
+<!--↑並べ替え＞select↑-->
+
+
+<!--↓ページング↓-->
+<script type="application/x-jarty" id="tpl_pager">
+
+<form class="SYS_box_pager">
+<table cellpadding="0" cellspacing="4" summary="" class="pager"><tr><td>
+{math assign="page_max" equation="ceil(items_length / items_per_page)" items_length=$items.length items_per_page=$config.items_per_page}
+{math assign="page_from" equation="max(1, floor((page - 1) / 10) * 10)" page=$page}
+{math assign="page_to" equation="min(page_max, page_from + 10 + (page_from > 1))" page_max=$page_max page_from=$page_from}
+	{if $page > 1}<a href="#" class="SYS_btn_pager_prev">前へ</a>{/if}
+	{if $page_from > 1}<a href="#" class="SYS_btn_pager">1</a></strong>{/if}
+	{for from=$page_from to=$page_to item="page_at"}
+	{if $page_at == $page}<span class="here">{$page_at}</span>{else}<a class="SYS_btn_pager" href="#">{$page_at}</a>{/if}
+	{/for}
+	{if $page_to < $page_max}<a href="#" class="SYS_btn_pager">{$page_max}</a>{/if}
+	{if $page < $page_max}<a href="#" class="SYS_btn_pager_next">次へ</a>{/if}
+</td></tr></table>
+</form>
+
+</script>
+<!--↑ページング↑-->
+
+
+<!---->
+<script type="application/x-jarty" id="tpl_mylistitem">
+{capture assign="video_watch_ref_param"}mylist_s{$sort|escape}_p{$page|escape}_n{$items.length}{if $mylist_ref_parameter != ''}_{$mylist_ref_parameter}{/if}{/capture}
+{capture assign="watch_link_param"}?playlist_type=mylist&group_id={$group.id|escape:url}&mylist_sort={$sort|escape:url}&ref={$video_watch_ref_param}{/capture}
+
+<div class="SYS_box_item" id="SYS_box_item_{$item.item_type}_{$item.item_id|escape}">
+<table width="624" cellpadding="4" cellspacing="0" summary="" style="margin:0 24px 8px;">
+<tr valign="top">
+<td>
+{if $item.item_type == 0}
+	{if $item.item_data.video_id}
+	<p><a href="watch/{$item.item_data.watch_id|escape:url}{$watch_link_param}"><img src="http://res.nimg.jp/img/x.gif" data-original="{if $item.item_data.deleted % 8}http://res.nimg.jp/img/common/video_deleted_ja-jp.jpg{else}{$item.item_data.thumbnail_url}{/if}" alt="" class="img_std96 jsLazyImage"></a></p>
+	<p class="vinfo_length"><span>{$item.item_data.length_seconds|time_format}</span></p>
+	{else}
+	<img src="http://res.nimg.jp/img/x.gif" data-original="http://res.nimg.jp/img/common/video_deleted_ja-jp.jpg" alt="" class="img_std96 jsLazyImage">
+	{/if}
+{elseif $item.item_type == 5}
+<a href="{$seiga_base_url}watch/{if $item.item_data.theme_type == 1}mg{else}sg{/if}{$item.item_data.id|escape:url}"><img src="http://res.nimg.jp/img/x.gif" data-original="{$item.item_data.thumbnail_url}" alt="" class="img_std96 jsLazyImage"></a>
+{elseif $item.item_type == 6}
+<div class="imgContainer">
+	<a href="{$seiga_base_url}watch/bk{$item.item_data.id|escape:url}">
+		<img src="http://res.nimg.jp/img/x.gif" data-original="{$item.item_data.thumbnail}" alt="" class="jsLazyImage book" data-lazyimage-adjust>
+	</a>
+</div>
+{elseif $item.item_type == 13}
+<div class="imgContainer blomaga">
+	<a href="{$ch_base_url}{$item.item_data.screen_name|escape}/blomaga/ar{$item.item_data.id|escape:url}">
+		<img src="http://res.nimg.jp/img/x.gif" data-original="{$item.item_data.thumbnail_url}" alt="" class="jsLazyImage blomaga img_std96">
+	</a>
+</div>
+{/if}
+</td>
+<td class="SYS_box_item_data" width="100%">
+	<div class="SYS_box_item_buttons" style="position:relative; display:none;"><p>{strip}
+	{if !$playlist_stop && !$playlist_tmp_stop && $item.item_type == 0 && $item.item_data.video_id && $page_name == 'mylist'}<a href="watch/{if $item.item_data.group_type != 'default'}{$item.item_id}{else}{$item.item_data.video_id}{/if}?playlist_type=mylist_playlist&group_id={$group.id}&mylist_sort={$sort}"><img src="http://res.nimg.jp/img/common/tilebtn/playlist.png" alt="" title="ここから連続再生"></a>{/if}
+	{if $item.item_type == 0 && $item.item_data.video_id}<a href="{$uad_base_url}ads/?vid={$item.item_data.watch_id|escape:url}&video_my"><img src="http://res.nimg.jp/img/common/tilebtn/uad.png" alt="" title="宣伝"></a>{/if}
+	{/strip}</p>
+</div>
+
+{if $item.item_type == 0}
+	{if $item.item_data.video_id}
+	{include id="tpl_mylistitem_video"}
+	{else}
+	{include id="tpl_mylistitem_deleted_item"}
+	{/if}
+{elseif $item.item_type == 5}
+{include id="tpl_mylistitem_seiga"}
+{elseif $item.item_type == 6}
+{include id="tpl_mylistitem_book"}
+{elseif $item.item_type == 13}
+{include id="tpl_mylistitem_blomaga"}
+{/if}
+
+{if $page_name != "mymemory"}
+<div class="SYS_box_memo_normal" style="display:{if $item.description}block{else}none{/if};">
+<p class="SYS_box_memo">{$item.description|nico_format|nl2br|word_wrap}</p>
+</div>
+<form class="SYS_box_memo_edit" style="display:none;">
+<p style="margin:4px 0 0;"><textarea name="memo" rows="4" style="width:400px;">{$item.description}</textarea></p>
+<p><input type="submit" value="保存" class="submit"><input type="button" class="submit SYS_btn_cancel_edit_memo" value="キャンセル"></p>
+</form>
+{/if}
+</td>
+</tr>
+</table>
+</div>
+
+</script>
+<!---->
+
+
+<!---->
+<script type="application/x-jarty" id="tpl_mylistitem_video">
+
+<p class="font12">
+{if $item.item_data.group_type == "mymemory"}<strong>{$item.item_data.mymemory_time|locale_date_format:"%Y年%m月%d日 %H:%M"}</strong> 時点のマイメモリー
+{else}<strong>{$item.item_data.first_retrieve|locale_date_format:"%Y年%m月%d日 %H:%M"}</strong> 投稿
+{/if}
+</p>
+<p class="font16" style="margin:0 0 4px;"><a href="/watch/{$item.item_data.watch_id|escape:url}{$watch_link_param}" class="watch">{$item.item_data.title|word_wrap}</a></p>
+<p class="font12">再生：<strong>{$item.item_data.view_counter|number_format}</strong>&nbsp;&#x20;コメ：<strong>{$item.item_data.num_res|number_format}</strong>&nbsp;&#x20;マイ：<a href="mylistcomment/video/{$item.item_data.watch_id|escape:url}"><strong>{$item.item_data.mylist_counter|number_format}</strong></a></p>
+
+</script>
+<!---->
+
+<!---->
+<script type="application/x-jarty" id="tpl_mylistitem_deleted_item">
+
+<p class="font16" style="color:#393F3F;">削除されました</p>
+
+</script>
+<!---->
+
+<!---->
+<script type="application/x-jarty" id="tpl_mylistitem_seiga">
+
+<p class="font12">
+<span style="color:#693;">{if $item.item_data.theme_type == 1}【漫画】{else}【静画】{/if}</span><strong>{$item.item_data.create_time|locale_date_format:"%Y年%m月%d日 %H:%M"}</strong> 作成
+</p>
+<p class="font16" style="margin:0 0 4px;"><a href="{$seiga_base_url}watch/{if $item.item_data.theme_type == 1}mg{else}sg{/if}{$item.item_data.id|escape:url}" class="watch">{$item.item_data.title|escape|word_wrap}</a></p>
+<p class="font12">{if $item.item_data.theme_type == 1}ページ：{else}画：{/if}<strong>{$item.item_data.res_count|number_format}</strong>&nbsp;&#x20;再生：<strong>{$item.item_data.view_count|number_format}</strong>&nbsp;&#x20;コメ：<strong>{$item.item_data.comment_count|number_format}</strong>&nbsp;&#x20;マイ：<a href="mylistcomment/seiga/{if $item.item_data.theme_type == 1}mg{else}sg{/if}{$item.item_data.id|escape:url}"><strong>{$item.item_data.mylist_count|default:'0'|number_format}</strong></a></p>
+
+</script>
+<!---->
+
+<!---->
+<script type="application/x-jarty" id="tpl_mylistitem_book">
+
+<p class="font12">
+<span style="color: #4b0082;">【書籍】</span><strong>{$item.item_data.released_at|locale_date_format:"%Y年%m月%d日 %H:%M"}</strong> 作成
+</p>
+<p class="font16" style="margin:0 0 4px;">
+	<a href="{$seiga_base_url}watch/bk{$item.item_data.id|escape:url}" class="watch">{$item.item_data.name|escape|word_wrap}</a>
+</p>
+<p class="font12">再生：<strong>{$item.item_data.view_counter|number_format}</strong>&nbsp;&#x20;コメ：<strong>{$item.item_data.comment_counter|number_format}</strong>&nbsp;&#x20;マイ：<a href="mylistcomment/book/bk{$item.item_data.id|escape:url}"><strong>{$item.item_data.mylist_counter|default:'0'|number_format}</strong></a></p>
+</script>
+<!---->
+
+<!---->
+<script type="application/x-jarty" id="tpl_mylistitem_blomaga">
+
+<p class="font12">
+<span style="color: #4b0082;">【ブロマガ】</span><strong>{$item.item_data.create_time|locale_date_format:"%Y年%m月%d日 %H:%M"}</strong> 作成
+</p>
+<p class="font16" style="margin:0 0 4px;">
+	<a href="{$ch_base_url}{$item.item_data.screen_name|escape:url}/blomaga/ar{$item.item_data.id|escape:url}" class="watch">{$item.item_data.title|escape|word_wrap}</a>
+</p>
+<p class="font12">コメ：<strong>{$item.item_data.comment_count|number_format}</strong>&nbsp;&#x20;マイ：<a href="mylistcomment/blomaga/ar{$item.item_data.id|escape:url}"><strong>{$item.item_data.mylist_count|default:'0'|number_format}</strong></a></p>
+</script>
+<!---->
+
+<!--↓メンテナンス表示↓-->
+<script type="application/x-jarty" id="tpl_maintenance_header">
+
+<div class="mb16p4">
+<h1>マイリストはメンテナンス中です</h1>
+<p class="font12">メンテナンス中により、本機能はご利用いただけません。</p>
+</div>
+
+</script>
+<!--↑メンテナンス表示↑--><!--↑左列↑-->
+</div>
+
+<!--↓右列↓-->
+<div class="content_312">
+<!--↓貼付用↓-->
+<div class="mb8p4"><div style="background:#F9FFFF; border:solid 2px #C9CFCF; padding:2px;">
+<p class="font12" style="margin:4px;"><strong>【ブログサイトに貼付】</strong></p>
+<table cellpadding="0" cellspacing="4" summary="" class="font12" style="margin:0 auto;">
+<tr>
+<td nowrap align="right">&lt;iframe&gt;タグ：</td>
+<td><form name="form_iframe"><input readonly="true" name="input_iframe" type="text" class="paste" style="width:160px;" onclick="javascript:document.form_iframe.input_iframe.focus(); document.form_iframe.input_iframe.select();" value='&lt;iframe width=&quot;312&quot; height=&quot;176&quot; src=&quot;http://ext.nicovideo.jp/thumb_mylist/12732998&quot; scrolling=&quot;no&quot; style=&quot;border:solid 1px #CCC;&quot; frameborder=&quot;0&quot;&gt;&lt;a href=&quot;http://www.nicovideo.jp/mylist/12732998&quot;&gt;【ニコニコ動画】&lt;/a&gt;&lt;/iframe&gt;'></form></td>
+</tr>
+<tr>
+<td nowrap align="right">&lt;a&gt;タグ：</td>
+<td><form name="form_link"><input readonly="true" name="input_link" type="text" class="paste" style="width:160px;" onclick="javascript:document.form_link.input_link.focus(); document.form_link.input_link.select();" value='&lt;a target=&quot;_blank&quot; href=&quot;http://www.nicovideo.jp/mylist/12732998&quot;&gt;【ニコニコ動画】&lt;/a&gt;'></form></td>
+</tr>
+</table>
+</div></div>
+<!--↑貼付用↑-->
+
+<div class="mb8p4">
+<p id="web_pc_prime"></p>
+</div>
+
+<script type="text/javascript"><!--
+
+	(function(){
+		var segment = Ads.get_segment_object();
+
+	
+		new Ads.Advertisement({zone: 105, segments: segment, impression: 2}).set('web_pc_prime');
+
+	
+	})();
+
+//--></script>
+
+<!---->
+
+
+<div id="web_pc_360"></div>
+
+<script type="text/javascript"><!--
+
+(function(){
+	var segment = Ads.get_segment_object();
+	new Ads.Advertisement({
+
+		zone: 153,
+
+		segments: segment,
+		impression: 2}).set('web_pc_360', function () {
+			return [ '<p style="margin:0 0 2px;">', this.getTag(), '</p>', '<p class="font12">', this.link(this.getBannertext().replace(/\r?\n/g, '<br>')), '</p>'].join("\n");
+		});
+})();
+
+--></script>
+
+
+</div>
+<!--↑右列↑-->
+
+<script type="text/javascript" src="http://res.nimg.jp/js/lib/jquery/jquery.history.js"></script>
+<script type="text/javascript" src="http://res.nimg.jp/js/lib/jarty.js?0.2.2"></script>
+<script type="text/javascript" src="http://res.nimg.jp/js/nicolib.i18n.min.js"></script>
+<script type="text/javascript" src="http://res.nimg.jp/js/lib/jarty.date.i18n.js"></script>
+<script type="text/javascript">
+Nico.i18n.DateTime.setUserTimezoneOffset(32400 * 1000);
+</script>
+<script type="text/javascript" src="http://res.nimg.jp/js/nicoapi.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://res.nimg.jp/scripts/common/lazyimage.js?150128"></script>
+<script type="text/javascript" src="http://res.nimg.jp/js/mylist2.js?150128"></script>
+<script type="text/javascript"><!--
+
+	Jarty.globals({
+		base_url: "http://www.nicovideo.jp/",
+		seiga_base_url: "http://seiga.nicovideo.jp/",
+		ch_base_url: "http://ch.nicovideo.jp/",
+		uad_base_url: "http://uad.nicovideo.jp/",
+		secure_base_url: "https://secure.nicovideo.jp/",
+		here: "/mylist/12732998",
+		is_owner: false,
+		is_premium : false,
+		mylist_owner: { user_id: 5390149, nickname: "ぐるたみん" },
+		edit: false,
+		folders: "defa1,defa2,white,black,red,yellow,green,cyan,blue,purple".split(/,/),
+		playlist_stop: false,
+		playlist_tmp_stop: false,
+		use_nicorepo: false,
+		nicorepo_mode: false,
+		favmylist_available: false,
+		watched_count: '',
+		watching_full: false,
+		watching_near_limit: false,
+		is_general_harajuku: false,
+		is_watching_this_mylist: false,
+		mylist_ref_parameter: ""
+	});
+
+	MylistGroup.preloadSingle(12732998, {
+		id: 12732998,
+		user_id: 5390149,
+		name: "ぐるたみんツアー！！！",
+		description: "コラボ⇒mylist/22779091\r\nCD、LIVEクロスフェード集⇒mylist/48086933\r\n\r\nコミュニティ⇒co290452\r\n\r\ntwitter⇒https://twitter.com/glutamine_nico\r\n\r\n\r\nofficial site⇒http://glutan.jp\r\n\r\n応援の方はこちら⇒glutamine@live.jp\r\n\r\n依頼の方はこちら⇒glutamineglutamine@gmail.com",
+		public: 1,
+		default_sort: 6,
+		create_time: 1243327361,
+		update_time: 1422705827,
+		icon_id: 2,
+		watching_list: false	});
+	Mylist.preload(12732998, [{"item_type":0,"item_id":"1244147326","description":"","item_data":{"video_id":"sm7250972","title":"\u3010\u3046\u308b\u304a\u307c\u3048\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30ed\u30df\u30aa\u3068\u30b7\u30f3\u30c7\u30ec\u30e9\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=7250972","first_retrieve":1244147328,"update_time":1440812200,"view_counter":"816937","mylist_counter":"11815","num_res":"60908","group_type":"default","length_seconds":"279","deleted":"0","last_res_body":"\u3050\u308b\u305f\u307f\u3093s\u306f\u5343\u8449\u51fa \u6b4c\u8a5e\u899a\u3048\u308b\u306e\u82e6\u624b\u306a\u306e wwww \u3050\u308b\u305f\u3093\u3063\u3066\u6700\u521d\u306e\u9803 \u521d... ","watch_id":"sm7250972"},"watch":0,"create_time":1259942154,"update_time":1259942174},{"item_type":0,"item_id":"1257412121","description":"","item_data":{"video_id":"sm8719565","title":"\u3010\u3046\u308b\u304a\u307c\u3048\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u53f3\u80a9\u306e\u8776\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=8719565","first_retrieve":1257412123,"update_time":1441020160,"view_counter":"738884","mylist_counter":"12258","num_res":"57150","group_type":"default","length_seconds":"279","deleted":"0","last_res_body":"\u304b\u3063\u3053\u3088\u3059\u304e!! \u308f\u308c\u3066\u308b\u306a\u3041 \u30ea\u30f3\u306e\u307b\u3046\u304c\u9ad8\u3044\u304b\u3089 \u4e0d\u5354\u548c\u97f3\u2606 \u3050... ","watch_id":"sm8719565"},"watch":0,"create_time":1259942147,"update_time":1259942174},{"item_type":0,"item_id":"1265740438","description":"","item_data":{"video_id":"sm9659392","title":"\u3010\u3046\u308b\u304a\u307c\u3048\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30d6\u30e9\u30c3\u30af\u2605\u30ed\u30c3\u30af\u30b7\u30e5\u30fc\u30bf\u30fc\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=9659392","first_retrieve":1265740441,"update_time":1441026556,"view_counter":"800304","mylist_counter":"13543","num_res":"67124","group_type":"default","length_seconds":"291","deleted":"0","last_res_body":"wwwwwwwwwwwww \u7530\u6751\u3063\u3066\u8ab0\u3084\u306d\u3093w\u3066 \u304b\u3055\u306d\u3059\u304e 80\u4e07\u304a\u3081 800000.\u3057\u3085\u3054\u3044!! \u591a\u5206... ","watch_id":"sm9659392"},"watch":0,"create_time":1265742600,"update_time":1265742600},{"item_type":0,"item_id":"1267365328","description":"","item_data":{"video_id":"sm9870331","title":"\u3010\u3061\u3083\u3093\u3068\u6b4c\u3063\u3066\u307f\u305f\u3011\u5929\u6a02\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=9870331","first_retrieve":1267365331,"update_time":1441026454,"view_counter":"1348205","mylist_counter":"29651","num_res":"42355","group_type":"default","length_seconds":"275","deleted":"0","last_res_body":"\u308f\u308c\u308f\u308c \u308f\u308c \u672c\u5bb6\u8d8a\u3048\u305f\u306a... \u2605\u2606\u2605\u2606\u2605\u2606\u2605\u2606\u2605\u2605\u2606\u2605\u2606\u2605\u2606\u2606\u2605\u2606\u2605\u2606 ","watch_id":"sm9870331"},"watch":0,"create_time":1267365390,"update_time":1267365390},{"item_type":0,"item_id":"1267494291","description":"","item_data":{"video_id":"sm9885792","title":"\u3010\u6b4c\u3063\u3066\u307f\u305f\u3011\u30cb\u30bb\u30e2\u30ce\u30c8\u30ec\u30b8\u30e3\u30fc\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=9885792","first_retrieve":1267494294,"update_time":1440556208,"view_counter":"317932","mylist_counter":"6637","num_res":"7687","group_type":"default","length_seconds":"169","deleted":"0","last_res_body":"\u30a8\u30c3\u30b5\u30a4\u30a8\u30b5\u30a4\u30b8\u30fc\u30a8 \u30a8\u30c3\u30b5\u30a4\u30a8\u30b5\u30a4... ","watch_id":"sm9885792"},"watch":0,"create_time":1267494611,"update_time":1267494611},{"item_type":0,"item_id":"1269672447","description":"","item_data":{"video_id":"sm10178819","title":"\u3010\u3046\u308b\u304a\u307c\u3048\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u88cf\u8868\u30e9\u30d0\u30fc\u30ba\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=10178819","first_retrieve":1269672450,"update_time":1440979399,"view_counter":"1287188","mylist_counter":"20549","num_res":"72377","group_type":"default","length_seconds":"188","deleted":"0","last_res_body":"\u4eca\u3001\u8caf\u91d1\u3063\u3066\u8a00\u3063\u305f\u3088 \u3084\u3063\u3071\u3050\u308b\u305f\u3093\u306f\u9ad8\u97f3 \u30c9\u30ca\u30eb\u30c9\u7d1b\u308c\u8fbc\u3093\u3060?w \u8ab0\u3058\u3083\u306a\u304f\u3066... ","watch_id":"sm10178819"},"watch":0,"create_time":1269672497,"update_time":1269672497},{"item_type":0,"item_id":"1270821236","description":"","item_data":{"video_id":"sm10336273","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30ed\u30fc\u30ea\u30f3\u30ac\u30fc\u30eb\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=10336273","first_retrieve":1270821235,"update_time":1441016317,"view_counter":"1741713","mylist_counter":"28936","num_res":"87684","group_type":"default","length_seconds":"200","deleted":"0","last_res_body":"\u3053\u306e\u7d75\u306e\u30df\u30af\u5acc\u3044\u3060\u308f \u80ba\u6d3b\u91cf\u3059\u3054\u3044\u306aw \u3059\u3052\u3047ww \u3041\u3042\u3042\u3042\u3042\u3042\u3042\u3042! \u3069\u3046\u3084\u3063\u3066\u3053\u3093\u306a\u58f0\u3067 ","watch_id":"sm10336273"},"watch":0,"create_time":1270821272,"update_time":1270821272},{"item_type":0,"item_id":"1273238187","description":"","item_data":{"video_id":"sm10643047","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011Fire\u25ceFlower \u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=10643047","first_retrieve":1273238186,"update_time":1440845757,"view_counter":"982489","mylist_counter":"21577","num_res":"40059","group_type":"default","length_seconds":"260","deleted":"0","last_res_body":"\u8352\u308c\u3066\u308b\u306a\u3042 \u3053\u306e\u6b4c\u597d\u304d\u306b\u306a\u3063\u305f\u306e \u30df\u30ea\u30aa\u30f3\u3044\u3051! \u306a\u3093\u304b\u3088\u304f\u308f\u304b\u3093\u306a.. ","watch_id":"sm10643047"},"watch":0,"create_time":1273238620,"update_time":1273238620},{"item_type":0,"item_id":"1278001290","description":"","item_data":{"video_id":"sm11248146","title":"\u3010\u3072\u3068\u308a\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011IMITATION BLACK \u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=11248146","first_retrieve":1278001289,"update_time":1440856876,"view_counter":"596030","mylist_counter":"11127","num_res":"35406","group_type":"default","length_seconds":"223","deleted":"0","last_res_body":"\u9f3b\u8840\u3068\u307e\u3093\u306a\u3044 \u3044\u3048\u3044\u3048\u30fc!\u826f\u3044\u58f0\u3060 \u5927\u597d\u304d! \u4f55\u304c\u59cb\u307e\u308b\u3093\u3067\u3059? \u3050\u308b\u305f\u3093\u8a95\u751f\u65e5\u304a\u3081! ","watch_id":"sm11248146"},"watch":0,"create_time":1278053236,"update_time":1278053236},{"item_type":0,"item_id":"1281624690","description":"","item_data":{"video_id":"sm11729204","title":"\u3010\u3046\u308b\u304a\u307c\u3048\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011only my railgun\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=11729204","first_retrieve":1281624690,"update_time":1441018467,"view_counter":"7638592","mylist_counter":"126044","num_res":"831865","group_type":"default","length_seconds":"257","deleted":"0","last_res_body":"Wwwww \u30f3\u30a6\u30a6\u30a6\u2191 \u5c3e\u5c3e \u5929\u4f1a\u306a\u3069\u77e5\u3089\u306a\u3044\u7b11\u307f 88888888888888888888 \u30b3\u30ca\u30f3\u300c\u3044... ","watch_id":"sm11729204"},"watch":0,"create_time":1281625858,"update_time":1281625858},{"item_type":0,"item_id":"1290609271","description":"","item_data":{"video_id":"sm12848502","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u3044\u308d\u306f\u5504\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=12848502","first_retrieve":1290609271,"update_time":1441030060,"view_counter":"1023338","mylist_counter":"20268","num_res":"38885","group_type":"default","length_seconds":"244","deleted":"0","last_res_body":"\u7d75\u3082\u30a8\u30ed\u3044!! \u8cea\u554f\u3067\u3059!\u3050\u308b\u305f\u307f\u3093 \u30a8\u30ed\u3044\/\/\/ \u3042\u3042\u3042\u3042\u3093 \u30a8\u30ed\u3044\u2026\u8272... ","watch_id":"sm12848502"},"watch":0,"create_time":1290615097,"update_time":1290615097},{"item_type":0,"item_id":"1298547990","description":"","item_data":{"video_id":"sm13696241","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30de\u30c8\u30ea\u30e7\u30b7\u30ab\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=13696241","first_retrieve":1298547990,"update_time":1441005934,"view_counter":"2909470","mylist_counter":"64430","num_res":"186017","group_type":"default","length_seconds":"200","deleted":"0","last_res_body":"5\u4eba\u3058\u3083\u3093\u3001\u3078\u3047\u3063!? 88888888888888888888 \u3042\u306e\u306d \u3042\u3041\u3041\u3041\u3041\u30fc \u3044\u3063\u304d!!!!!!!!!!!!! (*\u309c\u2200... ","watch_id":"sm13696241"},"watch":0,"create_time":1298829979,"update_time":1298829979},{"item_type":0,"item_id":"1301572463","description":"","item_data":{"video_id":"sm14021360","title":"\u3010\u6b4c\u8a5e\u306e\u7d42\u308f\u308a\u3092\u25cb\u25cb\u3088\u3002\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u306f\u3058\u3081\u3066\u306e\u3061\u3085\u3046\u3010\u30b3\u30df\u30e5\u9650\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=14021360","first_retrieve":1301572459,"update_time":1439736518,"view_counter":"103066","mylist_counter":"2963","num_res":"8046","group_type":"community","length_seconds":"87","deleted":"0","last_res_body":"\u3088!\u3088! \u7d75\u304c\u304b\u308f\u3086\u3044 \u548c\u3080 nag \u4f55\u5ea6\u8074\u3044\u3066\u3082\u3044\u3044\u308f\u3041 \u306a\u3093\u304b\u30fb\u30fb\u30fb\u6d99\u3067\u3066.. ","watch_id":"1301572463"},"watch":0,"create_time":1310909171,"update_time":1310909171},{"item_type":0,"item_id":"1302790105","description":"","item_data":{"video_id":"sm14159744","title":"\u3010\u6b4c\u3063\u3066\u307f\u305f\u3011\u30da\u30c6\u30f3\u5e2b\u304c\u7b11\u3046\u9803\u306b\u3000ver.Tonika\u3000mov.\u305b\u3044\u3042\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=14159744","first_retrieve":1302790105,"update_time":1441034171,"view_counter":"555975","mylist_counter":"13501","num_res":"18863","group_type":"default","length_seconds":"222","deleted":"0","last_res_body":"\u30b0\u30eb\u30b3\u30b5\u30df\u30f3\u3063\u3066\u3053\u3068 \u2190\u3058\u3083\u3042\u3001\u4ffa\u30da\u30c6\u30f3\u5e2b rrrrrrrrrrrr \u3050\u308b\u305f\u3042\u3042\u3093!\u8a95\u751f\u65e5 ","watch_id":"sm14159744"},"watch":0,"create_time":1310908966,"update_time":1310908966},{"item_type":0,"item_id":"1303921197","description":"","item_data":{"video_id":"sm14282144","title":"\u3010\u30b3\u30df\u30e5\u9650\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u6d88\u81ed\u529b\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=14282144","first_retrieve":1303921155,"update_time":1440079780,"view_counter":"110617","mylist_counter":"1874","num_res":"2557","group_type":"community","length_seconds":"16","deleted":"0","last_res_body":"\u5e02\u5834\u3044\u3044\u5302\u3044\u3059\u308b wwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwww \u30e9\u30e9\u30e9\u306e\u304a\u3058\u3055\u3093 wwwwww wwww... ","watch_id":"1303921197"},"watch":0,"create_time":1310909193,"update_time":1310909193},{"item_type":0,"item_id":"1310891667","description":"","item_data":{"video_id":"sm15040870","title":"\u3010\u3050\u308b\u305f\u307f\u3093\u00d7\u3086\u3046\u5341feat.mao\u3011\u304a\u3063\u304f\u305b\u3093\u307e\u3093\u304c\u5012\u305b\u306a\u3044\u3010\u6b4c\u3063\u3066\u307f\u305f\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=15040870","first_retrieve":1310891664,"update_time":1441009813,"view_counter":"830284","mylist_counter":"22661","num_res":"35606","group_type":"default","length_seconds":"236","deleted":"0","last_res_body":"\u304f\u308a\u3042\u3093wwww \u30ed\u30c3\u30af\u30de\u30f3\u3060! \u304a\u3063\u304f\u305b\u3093\u307e\u3093 \u3086\u3046\u3068\u30de\u30f3\u3082\u3001\u3050\u308b\u305f ","watch_id":"sm15040870"},"watch":0,"create_time":1310911095,"update_time":1310911095},{"item_type":0,"item_id":"1311781099","description":"","item_data":{"video_id":"sm15137937","title":"\u3010\u3046\u308b\u304a\u307c\u3048\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u3050\u30fc\u3050\u30fc\u3010\u30b3\u30df\u30e5\u9650\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=15137937","first_retrieve":1311781095,"update_time":1438492016,"view_counter":"79672","mylist_counter":"1172","num_res":"2537","group_type":"community","length_seconds":"27","deleted":"0","last_res_body":"\u304b\u308f\u3086\u3044ww \u53ef\u611b\u3059\u304e\u304bww \u30bf\u30b0\u306e\uff5e\u305f\u307f\u3093\u7387ww wwwwwwww 88888888888888888888 wwwwwwwwwwww \u3050\u308b\u305f... ","watch_id":"1311781099"},"watch":0,"create_time":1311781198,"update_time":1311781198},{"item_type":0,"item_id":"1311937241","description":"","item_data":{"video_id":"sm15153934","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u6df1\u6d77\u5c11\u5973\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=15153934","first_retrieve":1311937241,"update_time":1440982814,"view_counter":"1048556","mylist_counter":"25888","num_res":"54364","group_type":"default","length_seconds":"218","deleted":"0","last_res_body":"\u266a \u305d\u3057\u3066\u307e\u305f\u3072\u304b\u308a\u306f\u3075 \u3058\u3086\u3046\u306e\u306f\u306d\u3092\u304a\u304a\u304d ","watch_id":"sm15153934"},"watch":0,"create_time":1311937865,"update_time":1311937865},{"item_type":0,"item_id":"1313128509","description":"only my railugun\u3092\u3001\u3061\u3083\u3093\u3068\u6b4c\u3044\u307e\u3057\u305f\uff01","item_data":{"video_id":"sm15286678","title":"\u3010\u6226\u56fd\u7121\u53cc\u3011only my railgun\u3000\u3050\u308b\u305f\u307f\u3093\u3010\u624b\u66f8\u304dMAD\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=15286678","first_retrieve":1313128509,"update_time":1440500938,"view_counter":"471621","mylist_counter":"9980","num_res":"9896","group_type":"default","length_seconds":"255","deleted":"0","last_res_body":"88888888888888888888 \u8a95\u751f\u65e5\u304a\u3081\u3067\u3068\u304a\u304a\u304a \u00b0\u0434\u00b0) \u3042\u308c\u3001... ","watch_id":"sm15286678"},"watch":0,"create_time":1313129934,"update_time":1313129934},{"item_type":0,"item_id":"1314270051","description":"","item_data":{"video_id":"sm15415534","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30d0\u30d3\u30ed\u30f3\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=15415534","first_retrieve":1314270051,"update_time":1440854989,"view_counter":"1268448","mylist_counter":"28421","num_res":"64685","group_type":"default","length_seconds":"215","deleted":"0","last_res_body":"\u3042\u3042\u3042\u30fc\u3042\u3042\u3042\u3042\u3042\u3042 \u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042 \u3070\u3044\u3070\u3044\u3002 \u3070\u3044\u3070\u3044 \u3089... ","watch_id":"sm15415534"},"watch":0,"create_time":1314272079,"update_time":1314272079},{"item_type":0,"item_id":"1316084441","description":"","item_data":{"video_id":"sm15613049","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30e1\u30e9\u30f3\u30b3\u30ea\u30c3\u30af\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=15613049","first_retrieve":1316084441,"update_time":1441029474,"view_counter":"881114","mylist_counter":"20007","num_res":"45048","group_type":"default","length_seconds":"219","deleted":"0","last_res_body":"\u5acc\u3044\u306a\u306e\u306b\u898b\u308b\u3068\u304b\u30a2 88888888888888888888 \u307b\u3093\u307e\u3053... ","watch_id":"sm15613049"},"watch":0,"create_time":1316167949,"update_time":1316167949},{"item_type":0,"item_id":"1319803231","description":"","item_data":{"video_id":"sm16011082","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u5343\u672c\u685c\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=16011082","first_retrieve":1319803230,"update_time":1441032906,"view_counter":"3839064","mylist_counter":"82119","num_res":"342788","group_type":"default","length_seconds":"244","deleted":"0","last_res_body":"\u5343\u672c\u685c! (*\u309c\u2200\u309c)o\u5f61\u309c\u30cb\u30c3\u30dd (*\u309c\u2200\u309c)o\u5f61\u309c\u30cb\u30c3\u30dd \u4eab\u4fdd\u30c3! (\u6b63\u5fb3!) \u5b9d\u6c38\u30c3! (\u5143\u7984!) ... ","watch_id":"sm16011082"},"watch":0,"create_time":1319891051,"update_time":1319891051},{"item_type":0,"item_id":"1322483723","description":"","item_data":{"video_id":"sm16293609","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30ea\u30f3\u30cd\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=16293609","first_retrieve":1322483723,"update_time":1440460970,"view_counter":"656585","mylist_counter":"16871","num_res":"23310","group_type":"default","length_seconds":"253","deleted":"0","last_res_body":"\u3050\u308b\u305f\u307f\u3093(\u261d\u055e\u055e)\u261d\u30a6\u30a7 \u8a95\u751f\u65e5\u304a\u3081\u3067\u3068\u3046\u3002\u795d \u5272\u308c\u3068\u304b\u6642... ","watch_id":"sm16293609"},"watch":0,"create_time":1322568077,"update_time":1322568077},{"item_type":0,"item_id":"1322912683","description":"","item_data":{"video_id":"sm16334717","title":"\u3010\u30aa\u30ea\u30b8\u30ca\u30ebPV\u3011\u5929\u30ce\u5f31\u3010\u3050\u308b\u305f\u307f\u3093\u00d7\u306f\u3057\u3084\u3093\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=16334717","first_retrieve":1322912682,"update_time":1441008434,"view_counter":"1060870","mylist_counter":"28239","num_res":"26843","group_type":"default","length_seconds":"191","deleted":"0","last_res_body":"\u304b\u3063\u3053\u3088\u3059\u304e \u304b\u3063\u3053\u3044\u3044 \u6c34\u8272\u30fc \u9752\u3044\u3089\u306a\u30fc\u3044\u2193\u2193 \u3046\u3064\u306e\u306f\u3047\u30fc!! 88888888888888888888 ","watch_id":"sm16334717"},"watch":0,"create_time":1322973206,"update_time":1322973206},{"item_type":0,"item_id":"1324895151","description":"","item_data":{"video_id":"sm16530731","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30d1\u30f3\u30c0\u30d2\u30fc\u30ed\u30fc\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=16530731","first_retrieve":1324895151,"update_time":1441025167,"view_counter":"1167577","mylist_counter":"26108","num_res":"91020","group_type":"default","length_seconds":"226","deleted":"0","last_res_body":"\u3050 \u5f3e\u5e55\u672c\u5bb6\u8d85\u3048\u3057\u3084\u304c\u3063 \u3050\u3050\u3050\u3050\u3050\u3050\u3050\u3050\u3050\u3050 ","watch_id":"sm16530731"},"watch":0,"create_time":1325260055,"update_time":1325260055},{"item_type":0,"item_id":"1333882933","description":"","item_data":{"video_id":"sm17495362","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30a4\u30f3\u30d3\u30b8\u30d6\u30eb\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=17495362","first_retrieve":1333882933,"update_time":1441028813,"view_counter":"1608519","mylist_counter":"39157","num_res":"123812","group_type":"default","length_seconds":"218","deleted":"0","last_res_body":"\u304b\u3063\u3051\u30fc\u30fc! \u3059\u3054! \u30eb\u30f3\u30d1\u30c3\u30d1\u30fc\\(\u00b0\u2200\u00b0) \u30eb\u30f3\u30d1\u30c3\u30d1\u30fc!!!!!!!! \u30eb\u30f3\u30d1\u30c3\u30d1\u30fc\u30fd(\u309c\u2200\u309c ","watch_id":"sm17495362"},"watch":0,"create_time":1333965702,"update_time":1333965702},{"item_type":0,"item_id":"1338634886","description":"","item_data":{"video_id":"sm17988609","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011glow\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=17988609","first_retrieve":1338634886,"update_time":1440985441,"view_counter":"974742","mylist_counter":"28519","num_res":"53867","group_type":"default","length_seconds":"301","deleted":"0","last_res_body":"88888888888888888888 \u3046\u308f\u3041\u3041\u2026\u2026\u30de\u30b8\u6ce3\u304d\u3057 ","watch_id":"sm17988609"},"watch":0,"create_time":1338717805,"update_time":1338717805},{"item_type":0,"item_id":"1343300466","description":"","item_data":{"video_id":"sm18449991","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30ea\u30e2\u30b3\u30f3\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=18449991","first_retrieve":1343300466,"update_time":1440985129,"view_counter":"1039476","mylist_counter":"23804","num_res":"157048","group_type":"default","length_seconds":"312","deleted":"0","last_res_body":"\u3046\u30fc\u306b\u3083\u30fc\u266a \u3044\u3044\u3044\u3044\u3044\u3044\u3044\u3044\u3044\u3044 ","watch_id":"sm18449991"},"watch":0,"create_time":1343384035,"update_time":1343384035},{"item_type":0,"item_id":"1350126056","description":"","item_data":{"video_id":"sm19109957","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u516d\u5146\u5e74\u3068\u4e00\u591c\u7269\u8a9e\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=19109957","first_retrieve":1350126056,"update_time":1441018541,"view_counter":"1394649","mylist_counter":"32093","num_res":"242804","group_type":"default","length_seconds":"220","deleted":"0","last_res_body":"\/switch \u6c34\u8272\u69d8\u3001\u304a\u75b2\u308c\u69d8\u3067\u3059 \u306a\u3041&quot;\u3041&quot;\u3041 ","watch_id":"sm19109957"},"watch":0,"create_time":1350216234,"update_time":1350216234},{"item_type":0,"item_id":"1354705221","description":"","item_data":{"video_id":"sm19511219","title":"\u3010\u3046\u308b\u304a\u307c\u3048\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u8133\u6f3f\u70b8\u88c2\u30ac\u30fc\u30eb\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=19511219","first_retrieve":1354705221,"update_time":1441022169,"view_counter":"1273737","mylist_counter":"26559","num_res":"111645","group_type":"default","length_seconds":"191","deleted":"0","last_res_body":"\u3042\u3042 \u304a\u3046\u3075 \u30de\u30ab\u30ed\u30f3!\u30de\u30ab\u30ed\u30f3!\u30de ","watch_id":"sm19511219"},"watch":0,"create_time":1354796600,"update_time":1354796600},{"item_type":0,"item_id":"1362135621","description":"","item_data":{"video_id":"sm20216987","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u3044\u30fc\u3042\u308b\u3075\u3041\u3093\u304f\u3089\u3076\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=20216987","first_retrieve":1362135621,"update_time":1441016785,"view_counter":"1006940","mylist_counter":"102582","num_res":"77034","group_type":"default","length_seconds":"238","deleted":"0","last_res_body":"\u30ea\u30a2\u53cb\u306f\u5c11\u3057\u6e1b\u3063\u305f\u3051 \u3044\u30fc\u3042\u308b\u3075\u3041\u3093\u304f\u3089\u3076 \u3075\u3041\u3093\u304f\u3089\u3076 \u30df\u30ea\u30aa\u30f3\u304a\u3081\u3067\u3068\u3046!! ","watch_id":"sm20216987"},"watch":0,"create_time":1362314156,"update_time":1362314156},{"item_type":0,"item_id":"1375693224","description":"\u60f3\u3044\u304c\u8a70\u307e\u3063\u305f\u65b0\u3057\u3044Rebirth\u3092\u3088\u308d\u3057\u304f\u304a\u9858\u3044\u3057\u307e\u3059\uff01\uff01\uff01","item_data":{"video_id":"sm21520436","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011Rebirth\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=21520436","first_retrieve":1375704900,"update_time":1440387624,"view_counter":"222165","mylist_counter":"4465","num_res":"24597","group_type":"default","length_seconds":"341","deleted":"0","last_res_body":"\u3050\u308b\u305f\u3093\u8a95\u751f\u65e5\u304a\u3081\u3067 \u306a\u3093\u3067\u30cf\u30bb\u30ab\u30e9\u6c11\u304c\u6e67 \u8f9b... ","watch_id":"sm21520436"},"watch":0,"create_time":1375709038,"update_time":1375709038},{"item_type":0,"item_id":"1380366100","description":"","item_data":{"video_id":"sm21928147","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u6557\u5317\u306e\u5c11\u5e74\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=21928147","first_retrieve":1380366100,"update_time":1440893441,"view_counter":"399003","mylist_counter":"9632","num_res":"31531","group_type":"default","length_seconds":"238","deleted":"0","last_res_body":"888888888888 \u2193\u30ab\u30a6\u30f3\u30c8ww \u30ab\u30c3\u30b3\u3044\u3044 \u6bcd\u3061\u3083\u3093\u30e1\u30c3\u30c1\u30e3\u898b\u3066 \u2190\u65e5\u672c\u8a9e\u3063\u3066\u30e0\u30ba\u3044\u3082 Y... ","watch_id":"sm21928147"},"watch":0,"create_time":1380437313,"update_time":1380437313},{"item_type":0,"item_id":"1393583980","description":"","item_data":{"video_id":"sm22988008","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30db\u30b7\u30a2\u30a4\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=22988008","first_retrieve":1393585200,"update_time":1440937035,"view_counter":"298164","mylist_counter":"7789","num_res":"23721","group_type":"default","length_seconds":"284","deleted":"0","last_res_body":"\u3060\u3044\u305f\u3044\u4ed6\u306e\u4eba\u306e\u540d\u524d \u3084\u3063\u3071\u308a\u3050\u308b\u305f\u307f\u3093\u306e \u3084\u3070\u304f\u306a\u3044... ","watch_id":"sm22988008"},"watch":0,"create_time":1393734437,"update_time":1393734437},{"item_type":0,"item_id":"1394613832","description":"","item_data":{"video_id":"sm23076431","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u30ca\u30a4\u30d5\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=23076431","first_retrieve":1394622000,"update_time":1440778116,"view_counter":"149503","mylist_counter":"3933","num_res":"7485","group_type":"default","length_seconds":"266","deleted":"0","last_res_body":"\u672c\u5bb640\u4e07\u3044\u3063\u3066\u308b\u304c\u306a 88888888888888888888 \u304b\u3063\u3053\u3044\u3044!! \u3050\u308b\u305f\u307f\u3093\u8a95\u751f\u65e5\u304a\u3081 ","watch_id":"sm23076431"},"watch":0,"create_time":1394622948,"update_time":1394622948},{"item_type":0,"item_id":"1395228019","description":"","item_data":{"video_id":"sm23129244","title":"\u3010\u3050\u308b\u305f\u307f\u3093\u00d7\u3086\u3046\u3086\u3011\u30ed\u30fc\u30ea\u30f3\u30b0\u30fb\u30b5\u30d0\u30a4\u30d0\u30fc\u3010\u30aa\u30ea\u30b8\u30ca\u30ebPV\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=23129244","first_retrieve":1395228018,"update_time":1441029203,"view_counter":"154641","mylist_counter":"4474","num_res":"8096","group_type":"default","length_seconds":"246","deleted":"0","last_res_body":"\u3081\u3061\u3083\u3093\u3053\u3044\u3044\u66f2\u3084\u306a (*\u309c\u2200\u309c)o\u5f61\u00b0\u660e\u65e5\u3082\u3050 \u304b\u30fc\u304d\u6df7\u3063\u305c\u308b\u30fc\u30fc!! (*\u309c\u2200\u309c)o\u5f61... ","watch_id":"sm23129244"},"watch":0,"create_time":1406638351,"update_time":1406638351},{"item_type":0,"item_id":"1422525621","description":"","item_data":{"video_id":"sm25451399","title":"\u3010\u305d\u3093\u306a\u3075\u3044\u3093\u304d\u3067\u6b4c\u3063\u3066\u307f\u305f\u3011\u8ff7\u5984\u5c11\u5e74\u3068\u5c0f\u4e16\u754c \u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr4.smilevideo.jp\/smile?i=25451399","first_retrieve":1422525621,"update_time":1440982689,"view_counter":"121990","mylist_counter":"3769","num_res":"6022","group_type":"default","length_seconds":"240","deleted":"0","last_res_body":"\u795e love \u5927\u597d\u304d \u304a\u304a\u304a\u304a\u304a\u304a\u304a\u304a\u304a\u304a ","watch_id":"sm25451399"},"watch":0,"create_time":1422530953,"update_time":1422530953},{"item_type":0,"item_id":"1423044064","description":"","item_data":{"video_id":"sm25496096","title":"\u3042\u3063\u305f\u304b\u3044\u3093\u3060\u304b\u3089\u3041\u266a\u3000\u6b4c\u3063\u3066\u307f\u305f\u3093\u3060\u3057\u3000\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr1.smilevideo.jp\/smile?i=25496096","first_retrieve":1423044064,"update_time":1441024701,"view_counter":"421094","mylist_counter":"7594","num_res":"21260","group_type":"default","length_seconds":"83","deleted":"0","last_res_body":"\u304b\u308f\u3044\u3044 42\u4e07\u304a\u3081! \u30d7\u30ed\u306b\u306a\u3063\u3066\u3082\u307e\u305f\u6d41 \u306a\u305c\u306b\u306f\u306b\u308fw \u3050\u308b\u305f\u3093\u3050\u308b\u305f... ","watch_id":"sm25496096"},"watch":0,"create_time":1423052125,"update_time":1423052125},{"item_type":0,"item_id":"1425380446","description":"","item_data":{"video_id":"sm25705466","title":"\u30a2\u30a4\u306e\u30b7\u30ca\u30ea\u30aa\u3000\u6b4c\u3063\u3066&quot;\u3082&quot;\u307f\u305f\u3000\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=25705466","first_retrieve":1425380446,"update_time":1441031502,"view_counter":"229869","mylist_counter":"6218","num_res":"13454","group_type":"default","length_seconds":"274","deleted":"0","last_res_body":"\u30a6\u30a9\u30fc\u30aa\u30fc\u30aa\u30fc\\(&gt; Oh!!\u30a4\u30a7\u30fc\u30fc\u30fc\\(&gt; \u30a6\u30a9\u30fc\u30aa\u30fc\u30aa\u30fc\\(&gt; ","watch_id":"sm25705466"},"watch":0,"create_time":1425385686,"update_time":1425385686},{"item_type":0,"item_id":"1429269144","description":"","item_data":{"video_id":"sm26047969","title":"\u3010\u3061\u3083\u3093\u3068\u6b4c\u3063\u3066\u307f\u305f\u3011\u30d5\u30ed\u30a4\u30e9\u30a4\u30f3\uff1d\u30d3\u30d6\u30ea\u30a9\u30c1\u30ab\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr2.smilevideo.jp\/smile?i=26047969","first_retrieve":1429269144,"update_time":1440954489,"view_counter":"46263","mylist_counter":"1752","num_res":"2204","group_type":"default","length_seconds":"202","deleted":"0","last_res_body":"\u304b\u3063\u3053\u3044\u3044!! \u3042 88888888888888888888 \u3050\u308b\u305f\u307f\u3093\u3044\u3064\u3082\u3042\u308a \u3050\u308b\u305f\u3093\u8a95\u751f\u65e5\u304a\u3081\u3067 ","watch_id":"sm26047969"},"watch":0,"create_time":1429284489,"update_time":1429284489},{"item_type":0,"item_id":"1430391629","description":"","item_data":{"video_id":"sm26145610","title":"\u3053\u306e\u3075\u3056\u3051\u305f\u7d20\u6674\u3089\u3057\u304d\u4e16\u754c\u306f\u3001\u50d5\u306e\u70ba\u306b\u3042\u308b \u6b4c\u3063\u3066\u307f\u305f\u3010\u3050\u308b\u305f\u307f\u3093\u3011","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=26145610","first_retrieve":1430391625,"update_time":1441018542,"view_counter":"259892","mylist_counter":"6817","num_res":"16634","group_type":"default","length_seconds":"263","deleted":"0","last_res_body":"\u3082 \u50d5\u3082\u611b\u3057\u3066\u308b!!!!!! \u3050\u308b\u305f\u3093\u306e\u30b3\u30fc\u30e9\u30b9\u3001 30\u4e07\u76ee\u6307\u305d\u3046! \/switch a \u611b\u3057\u3066... ","watch_id":"sm26145610"},"watch":0,"create_time":1430477628,"update_time":1430477628},{"item_type":0,"item_id":"1432294196","description":"","item_data":{"video_id":"sm26313754","title":"\u3050\u308b\u305f\u307f\u3093\u00d7164\u3000JOURNEY","thumbnail_url":"http:\/\/tn-skr3.smilevideo.jp\/smile?i=26313754","first_retrieve":1432294196,"update_time":1441032380,"view_counter":"45310","mylist_counter":"1690","num_res":"3280","group_type":"default","length_seconds":"260","deleted":"0","last_res_body":"\u3050\u308b\u305f\u307f\u3093\u306e\u4e8b\u60aa\u304f\u8a00 \u5927\u597d\u304d\u3002 \u72af\u7f6a\u8005?\u308f\u308c\u305f\u307f... ","watch_id":"sm26313754"},"watch":0,"create_time":1432297583,"update_time":1432297583}]);
+
+	my.setPageDispatcher(function () {
+		this.showMylist(12732998);
+	});
+--></script>
+
+		</div>
+		<div id="PAGEFOOTER">
+		<noscript>
+<p class="mb8p4 font12" style="color:#C00;">Javascriptが無効になっていると、サイト内の一部機能がご利用いただけません</p>
+</noscript>
+
+<div id="pagetopContainer">
+<p class="mb8p4 font12"><a href="JavaScript:ANCHOR('PAGETOP')">ページトップ</a></p>
+	</div>
+<p class="font12" style="padding:4px; color:#999F9F;">
+
+<a target="_blank" href="http://bbs.nicovideo.jp/">掲示板</a> -
+<a target="_blank" href="http://qa.nicovideo.jp/">ヘルプ</a>-
+<a target="_blank" href="http://qa.nicovideo.jp/faq/show/1112">推奨環境</a>-
+<a target="_blank" href="https://secure.nicovideo.jp/secure/rule">利用規約</a>
+
+<p class="font12" style="padding:4px; color:#999F9F;">-
+	<a target="_blank" href="http://ex.nicovideo.jp/smile/guideline/">権利侵害に関する動画投稿ガイドライン</a> -
+	<a target="_blank" href="http://license-search.nicovideo.jp/">動画に使用できる音源の検索</a> -
+	<a target="_blank" href="http://info.nicovideo.jp/base/phishing.html">フィッシング詐欺にご注意ください</a> -	<a href="http://sales.ads.nicovideo.jp/">広告出稿に関するお問い合わせ</a> -
+	</p>
+<p style="padding:4px;"><img src="http://res.nimg.jp/img/base/foot/line.png" alt=""></p>
+
+<p class="mb8p4 font12">
+総動画数：<strong style="color:#393F3F;">12,371,242</strong>
+&nbsp;&nbsp;／
+総再生数：<strong style="color:#393F3F;">64,082,141,664</strong> ／
+総コメント数：<strong style="color:#393F3F;">4,813,138,519</strong>
+</p>
+
+
+<p class="mb8p4"><a href="http://niwango.jp/" target="_blank"><img src="http://res.nimg.jp/img/base/foot/incorporated.gif" alt="&amp;copy; niwango, Inc."></a></p>
+
+		</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript" charset="utf-8" src="http://notification.nicovideo.jp/res/notify.js?140901" async defer></script>
+<script type="text/javascript" charset="utf-8" src="http://enquete.nicovideo.jp/static/js/enquete.js?141028" async defer></script>
+
+</body>
+</html>
