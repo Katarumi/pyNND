@@ -53,16 +53,21 @@ def go(top,entries = []):
 	i = 0
 	while i < len(utaiteList):
 		print entries[i].get()
-		dlSongs(entries[i].get(),i,utaiteList)
+		if entries[i].get() != "":
+			dlSongs(entries[i].get(),i,utaiteList)
 		i = i + 1
 	top.destroy()
 
 def setup_player():
+	filename = askopenfilename()
+	media = vlc_instance.media_new(filename)
+	player.set_media(media)
 	player.play()
-	print media.get_mrl()# File location to get title ;)
+	
+	print media.get_mrl()
 	print player.get_title()
-	print player.get_length()#Time duration of file
-	print player.get_state()#Player's state
+	print player.get_length()
+	print player.get_state()
 
 def setInfo():
 	top = Toplevel()
@@ -85,6 +90,19 @@ def apSet(top,title,artist):
 	print mvCall
 	top.destroy()
 
+def dnp():
+	mrl = media.get_mrl()[7:]
+	mvCall = "mv " + mrl + " dnp/mrl > /dev/null"
+	subprocess.call(mvCall, shell=True)	
+
+def redl():
+	name = media.get_mrl()[53:]
+	if name != "":
+		mrl = media.get_mrl()[7:]
+	print mrl
+	print name
+
+
 menubar = Menu(root)
 
 
@@ -98,19 +116,23 @@ menubar = Menu(root)
 
 #root.config(menu=menubar)
 
-filename = "./media"
+#filename = "./media"
+#vlc_instance = vlc.Instance()
+#player = vlc_instance.media_player_new()
+
 vlc_instance = vlc.Instance()
-media = vlc_instance.media_new(filename)
 player = vlc_instance.media_player_new()
-player.set_media(media)
+
 utaiteList = []
 
 Button(text = "Add Info", command=addInfo).pack(fill=X)
 Button(text = "Load Backup", command=loadFromBackup).pack(fill=X)
 Button(text = "Debug Print Name", command=printName).pack(fill=X)
 Button(text = "Download", command=dl).pack(fill=X)
-Button(text = "Play MP4s", command=setup_player).pack(fill=X)
+Button(text = "Play Song", command=setup_player).pack(fill=X)
 Button(text = "Set Song Info", command=setInfo).pack(fill=X)
+Button(text = "Set Song as DNP", command=dnp).pack(fill=X)
+Button(text = "Mark Song for Redownload", command=redl).pack(fill=X)
 Button(text = "Quit", command=quit).pack(fill=X)
 
 

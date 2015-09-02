@@ -129,12 +129,13 @@ def convertAndTag(uNum, sNum, utaiteList = []):
 	getTitleCall = "./getTitle.sh " + "http://www.nicovideo.jp/watch/" + utaiteList[uNum].songList[sNum][:-1]
 	subprocess.call(getTitleCall, shell=True)
 	file = open("final", 'r')
-	return title = file.readline()[:-1]
+	title = file.readline()[:-1]
 	subprocess.call("mv " + utaiteList[uNum].songList[sNum][:-1] + ".m4a ./m4a/" + title + ".m4a", shell=True)
 	subprocess.call("mv " + utaiteList[uNum].songList[sNum][:-1] + " ./media/" + title + ".mp4", shell=True)
 	apCall = "atomicparsley ./m4a/" + str(title) + ".m4a --artist \"" + str(utaiteList[uNum].name) + "\" --title \"" + str(title) + "\" --overWrite"
 	print apCall
 	subprocess.call(apCall,shell=True)
+	return title
 #}
 
 def clearList(utaiteList = []):
