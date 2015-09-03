@@ -124,7 +124,7 @@ def dlSongs(dlNumber, uPos,  utaiteList = []):
 
 def convertAndTag(uNum, sNum, utaiteList = []):
 #{
-	avconvCall = "avconv -i " + utaiteList[uNum].songList[sNum][:-1] + " -vn -c:a alac " + utaiteList[uNum].songList[sNum][:-1] + ".m4a"
+#	avconvCall = "avconv -i " + utaiteList[uNum].songList[sNum][:-1] + " -vn -c:a alac " + utaiteList[uNum].songList[sNum][:-1] + ".m4a"
 	subprocess.call(avconvCall, shell=True)
 	getTitleCall = "./getTitle.sh " + "http://www.nicovideo.jp/watch/" + utaiteList[uNum].songList[sNum][:-1]
 	subprocess.call(getTitleCall, shell=True)
